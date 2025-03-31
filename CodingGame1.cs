@@ -5,10 +5,17 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
+class Lander
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int hSpeed { get; set; } // the horizontal speed (in m/s), can be negative.
+    public int vSpeed { get; set; } // the vertical speed (in m/s), can be negative.
+    public int fuel { get; set; } // the quantity of remaining fuel in liters.
+    public int rotate { get; set; } // the rotation angle in degrees (-90 to 90).
+    public int power { get; set; } // the thrust power (0 to 4).
+}
+
 class Player
 {
     static void Main(string[] args)
@@ -26,20 +33,20 @@ class Player
         while (true)
         {
             inputs = Console.ReadLine().Split(' ');
-            int X = int.Parse(inputs[0]);
-            int Y = int.Parse(inputs[1]);
-            int hSpeed = int.Parse(inputs[2]); // the horizontal speed (in m/s), can be negative.
-            int vSpeed = int.Parse(inputs[3]); // the vertical speed (in m/s), can be negative.
-            int fuel = int.Parse(inputs[4]); // the quantity of remaining fuel in liters.
-            int rotate = int.Parse(inputs[5]); // the rotation angle in degrees (-90 to 90).
-            int power = int.Parse(inputs[6]); // the thrust power (0 to 4).
 
-            // Write an action using Console.WriteLine()
-            // To debug: Console.Error.WriteLine("Debug messages...");
-
-
+            var info = new Lander()
+            { 
+                X = int.Parse(inputs[0]),
+                Y = int.Parse(inputs[1]),
+                hSpeed = int.Parse(inputs[2]),
+                vSpeed = int.Parse(inputs[3]), // the horizontal speed (in m/s), can be negative.
+                fuel = int.Parse(inputs[4]), // the quantity of remaining fuel in liters.
+                rotate = int.Parse(inputs[5]), // the rotation angle in degrees (-90 to 90).
+                power = int.Parse(inputs[6]) // the rotation angle in degrees (-90 to 90).
+            };
+            
             // 2 integers: rotate power. rotate is the desired rotation angle (should be 0 for level 1), power is the desired thrust power (0 to 4).
-            if (Y >= 1000) {
+            if (info.Y >= 1000) {
                 Console.WriteLine("0 3");
             } else {
                 Console.WriteLine("0 4");
