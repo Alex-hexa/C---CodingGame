@@ -13,7 +13,17 @@ class Lander
     public int vSpeed { get; set; } // the vertical speed (in m/s), can be negative.
     public int fuel { get; set; } // the quantity of remaining fuel in liters.
     public int rotate { get; set; } // the rotation angle in degrees (-90 to 90).
-    public int power { get; set; } // the thrust power (0 to 4).
+
+    public enum ThrustLevel
+    {
+        Zero = 0,
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4
+    }
+
+    public ThrustLevel power { get; set; } // the thrust power (0 to 4).
 }
 
 class Player
@@ -42,7 +52,7 @@ class Player
                 vSpeed = int.Parse(inputs[3]), // the horizontal speed (in m/s), can be negative.
                 fuel = int.Parse(inputs[4]), // the quantity of remaining fuel in liters.
                 rotate = int.Parse(inputs[5]), // the rotation angle in degrees (-90 to 90).
-                power = int.Parse(inputs[6]) // the rotation angle in degrees (-90 to 90).
+                power = (Lander.ThrustLevel)int.Parse(inputs[6]) // the thrust power (0 to 4).
             };
             
             // 2 integers: rotate power. rotate is the desired rotation angle (should be 0 for level 1), power is the desired thrust power (0 to 4).
